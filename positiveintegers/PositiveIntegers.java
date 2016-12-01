@@ -3,41 +3,55 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package positiveintegers;
+package examprep;
+
+import java.util.Scanner;
 
 /**
  *
- * @author nanle
+ * @author joshuagideon
  */
-import java.util.Scanner;
-public class PositiveIntegers {
-
+public class ExamPrep {
+    static Scanner console = new Scanner(System.in);
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter the number of numbers which you want to input!");
-        int numcases = Integer.parseInt(in.nextLine());
-        double negativeCounter = 0.0, positiveCounter = 0.0, ZeroCounter = 0.0;
-        for(int i = 0; i < numcases; i++){
-            int num = in.nextInt();
-            if(num<0){
-                negativeCounter++;
-            }else if(num>0){
-                positiveCounter++;
-            }else{
-                ZeroCounter++;
-            }
-            
-        }
-        double positiveInt = positiveCounter/numcases;
-        double negativeInt = negativeCounter/numcases;
-        double ZeroInt = ZeroCounter/numcases;
+        // TODO code application logic here        
+        String myString = console.nextLine();
+        String[] array = myString.split(" ");
         
-        System.out.println("The value for positive numbers is:" + " " + positiveInt);
-        System.out.println("The value for negative numbers is:" + " " + negativeInt);
-        System.out.println("The value for fraction zeroes is:" + " " + ZeroInt);
+            int[] myNumbers = new int[array.length];
+
+            for(int i = 0; i< array.length; i++){
+                myNumbers[i] = Integer.valueOf(array[i]);
+            }
+        
+        for(int i = 0; i< array.length; i++){
+            System.out.println(myNumbers[i]);
+        }
+        
+        int numPos=0, numNeg=0, numZero = 0;
+        
+        for (int item: myNumbers){
+            if(item == 0){
+                numZero ++;
+            }
+            if(item > 0){
+                numPos ++;
+            }
+            if(item < 0){
+                numNeg ++;
+            } 
+//            float fracPos = numPos/array.length;
+//            float fracNeg = numNeg/array.length;
+//            float fracZero = numZero/array.length;
+        }
+        
+        System.out.format("Postive %f", (float) numPos / array.length);
+        System.out.format("Negative %f", (float) numPos / array.length);
+        System.out.format("Zero %f", (float) numZero / array.length);
+        
     }
+    
 }
